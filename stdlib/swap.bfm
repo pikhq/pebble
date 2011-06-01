@@ -1,0 +1,7 @@
+source ^move.bfm
+
+macro swap {a b} {} {temp} {
+	move a > temp
+	move b > a
+	move temp > b
+}

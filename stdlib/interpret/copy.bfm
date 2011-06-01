@@ -1,0 +1,9 @@
+macro copy a b temp {
+	set temp 0
+
+	lang {
+		set memory([set memmap($b)]) [Getval $a]
+		Modvar $b
+	}
+	sameval a b
+}

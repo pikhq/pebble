@@ -1,0 +1,12 @@
+macro bitnot a {} temp {
+	set temp 0
+	subtract a 1
+	while a {
+		subtract temp 1
+		subtract a 1
+	}
+	while temp {
+		add a 1
+		subtract temp 1
+	}
+}

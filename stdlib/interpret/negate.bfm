@@ -1,0 +1,8 @@
+macro negate a {} temp {
+	set temp 0
+
+	lang {
+		set memory([set memmap($a)]) [expr {[Getval $a] * -1}]
+		Modvar $a
+	}
+}

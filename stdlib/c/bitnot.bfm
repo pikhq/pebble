@@ -1,0 +1,4 @@
+macro bitnot a {} temp {
+	set temp 0
+	*$a = ~*$a;
+}

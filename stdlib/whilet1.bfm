@@ -1,0 +1,9 @@
+source ^copy.bfm
+
+macro whilet1 {var test code} {} {testvar temp} {
+	while testvar {
+		eval code
+		copy var > testvar : temp
+		eval test
+	}
+}

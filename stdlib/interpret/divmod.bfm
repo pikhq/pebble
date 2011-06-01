@@ -1,0 +1,14 @@
+macro divmod a {b c} {temp1 temp2 temp3 temp4} {
+	set temp1 0
+	set temp2 0
+	set temp3 0
+	set temp4 0
+
+	lang {
+		set memory([set memmap($c)]) [expr {[Getval $b] % [Getval $a]}]
+		set memory([set memmap($b)]) [expr {[Getval $b] / [Getval $a]}]
+		Modvar $b
+		Modvar $c
+	}
+	sameval a b
+}

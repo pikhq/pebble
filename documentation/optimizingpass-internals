@@ -1,0 +1,11 @@
+	The optimizing pass has a stack, where the variables it knows is 0 are stored. This stack is manipulated by the commands "is0" and "isnot0".
+
+	is0 will append its arguments to the string at the top of the stack. isnot0 removes it arguments from every location on the stack. sameval puts its second argument in the top of the stack if the first argument is there.
+
+	The following commands execute "isnot0" unconditionally on their arguments: add, subtract, in.
+
+	While loops only compile if the variable it operates on is not 0. If the loop will compile, while duplicates the top of the stack before compiling its code. Then, it pops an item off the stack, never to be seen again.
+
+	set calls output "[-]" if, and only if, the variable it operates on is not 0. If the number given to it is 0, then set makes a call to is0. Otherwise, a call to isnot0 is made.
+
+	right and left start relative addressing, and the compiler keeps track of this. If an unsafe call is made before relative addressing is ended by at, the compiler sets all levels of the stack to {}. The following calls are unsafe: add, subtract, in, set. Ending relative addressing with a call to at prevents this behavior.

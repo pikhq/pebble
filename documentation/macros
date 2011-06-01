@@ -1,0 +1,119 @@
+^addvar.bfm:
+source ^move.bfm
+addvar a > b : temp
+ Adds a to b, storing it in b.
+
+^bitnot.bfm:
+bitnot a : temp
+ Performs a bitwise NOT on a, storing it in a.
+
+^booland.bfm:
+source ^move.bfm
+source ^copy.bfm
+booland a > b : temp
+ Performs a AND b, storing it in b.
+
+^boolnot.bfm:
+boolnot a : temp
+ Performs a boolean NOT on a, storing it in a.
+
+^boolor.bfm:
+source ^move.bfm
+source ^copy.bfm
+boolor a > b : temp1 temp2
+ Performs a OR b, storing it in b.
+
+^comp.bfm:
+source ^move.bfm
+comp a > b : temp1 temp2
+ Stores (a==b) in b.
+
+^copy.bfm:
+source ^move.bfm
+copy a > b : temp
+ Copies a into b.
+
+^divmod.bfm:
+source ^move.bfm
+source ^copy.bfm
+source ^subvar.bfm
+divmod a > b c : temp1 temp2 temp3 temp4
+ Calculates both a/b and a%b. a/b is stored in b, and
+ a%b is stored in c.
+
+^divvar.bfm:
+source ^move.bfm
+source ^copy.bfm
+divvar a > b : temp1 temp2 temp3 temp4
+ Calculates a/b, and stores in b.
+
+^if.bfm:
+if var code
+ Evaluates code if var!=0. Sets var to 0 afterwards.
+
+^ift.bfm:
+source ^if.bfm
+source ^copy.bfm
+ift var test code : testvar temp
+ Copys var into testvar, evaluates test, and evalutes code if testvar!=0.
+
+^itoa.bfm:
+source ^copy.bfm
+source ^divmod.bfm
+itoa a > b c d : temp1 temp2 temp3 temp4 temp5
+ Converts a into a decimal number, with the ASCII values stored in b, c, and d.
+ d is the most significant digit, and b the least.
+
+^move.bfm:
+move a > b
+ Moves a to b.
+
+^mulvar.bfm:
+source ^move.bfm
+source ^addvar.bfm
+mulvar a > b : temp1 temp2
+ Multiplies a by b, stores the value in b.
+
+^negate.bfm
+source ^move.bfm
+negate a : temp
+ Sets a to -a.
+
+^neq.bfm
+source ^move.bfm
+neq a > b : temp1 temp2
+ Stores (a!=b) in b.
+
+^outs.bfm
+outs end
+ Given the end of a string, output a string. Only works if the location before the string equals 0.
+
+^stdcons.bfm
+addcons# a : temp
+ Adds # to a.
+subcons# a : temp
+ Subtracts # from a.
+cons# a : temp
+ Sets a to #.
+ All of these macros require a Brainfuck implementation with 8-bit wrapping cells.
+
+^subvar.bfm
+source ^move.bfm
+subvar a > b : temp
+ Stores a-b in b.
+
+^swap.bfm
+source ^move.bfm
+swap a b : temp
+ Set a to b and b to a.
+
+^whilet.bfm
+source ^copy.bfm
+whilet var test code : testvar temp
+ Copies var into testvar and evaluates test. While testvar != 0, it evaluates code, copies var into testvar,
+ and evaluates test.
+
+^whilet1.bfm
+source ^copy.bfm
+whilet1 var test code : testvar temp
+ While testvar != 0, it evalutes code, copies var into testvar, and evaluates test.

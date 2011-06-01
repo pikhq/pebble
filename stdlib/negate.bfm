@@ -1,0 +1,10 @@
+source ^move.bfm
+
+macro negate a {} temp {
+	set temp 0
+	while a {
+		subtract temp 1
+		subtract a 1
+	}
+	move temp > a
+}

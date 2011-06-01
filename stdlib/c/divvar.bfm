@@ -1,0 +1,12 @@
+macro divvar a b {temp1 temp2 temp3 temp4} {
+	set temp1 0
+	set temp2 0
+	set temp3 0
+	set temp4 0
+	lang {{
+		div_t val;
+		val = div(*$b, *$a);
+		*$b = (char)val.quot;
+	}}
+	isnot0 b
+}

@@ -1,0 +1,8 @@
+source ^if.bfm
+source ^copy.bfm
+
+macro ift {var test code} {} {testvar temp} {
+	copy var > testvar : temp
+	eval test
+	if testvar code
+}

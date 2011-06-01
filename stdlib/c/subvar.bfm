@@ -1,0 +1,6 @@
+macro subvar a x temp {
+	set temp 0
+	lang {
+		*$x -= *$a;
+	}
+}

@@ -1,0 +1,8 @@
+macro copy a b temp {
+	set temp 0
+
+	lang {
+		*$b=*$a;
+	}
+	sameval a b
+}

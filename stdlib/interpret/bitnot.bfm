@@ -1,0 +1,8 @@
+macro bitnot a {} temp {
+	set temp 0
+
+	lang {
+		set memory([set memmap($a)]) [expr {~[Getval $a]}]
+		Modvar $a
+	}
+}

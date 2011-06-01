@@ -1,0 +1,12 @@
+macro boolnot a {} temp {
+	set temp 0
+	while a {
+		add temp 1
+		set a 0
+	}
+	add a 1
+	while temp {
+		subtract a 1
+		subtract temp 1
+	}
+}

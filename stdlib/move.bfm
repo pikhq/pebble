@@ -1,0 +1,8 @@
+macro move a b {} {
+	set b 0
+	while a {
+		add b 1
+		subtract a 1
+	}
+}
+

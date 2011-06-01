@@ -1,0 +1,36 @@
+source ^copy.bfm
+source ^divmod.bfm
+
+macro itoa a {b c d} {temp1 temp2 temp3 temp4 temp5} {
+	set temp1 10
+	set b 0
+	set c 0
+	set d 0
+	set temp2 0
+	set temp3 0
+	set temp4 0
+	set temp5 0
+	
+	divmod temp1 > a b : temp2 temp3 temp4 temp5
+	divmod temp1 > a c : temp2 temp3 temp4 temp5
+	divmod temp1 > a d : temp2 temp3 temp4 temp5
+	copy d > temp2 : temp1
+	set temp3 1
+	while temp2 {
+		addcons48 { b c d } : temp1
+		subtract temp3 1;is0 temp3
+		set temp2 0
+	}
+	while temp3 {
+		copy c > temp2 : temp1
+		while temp2 {
+			addcons48 { b c } : temp1
+			subtract temp3 1;is0 temp3
+			set temp2 0
+		}
+		while temp3 {
+			addcons48 b : temp1
+			subtract temp3 1;is0 temp3
+		}
+	}
+}

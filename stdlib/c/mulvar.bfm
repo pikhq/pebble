@@ -1,0 +1,7 @@
+macro mulvar a b {temp1 temp2} {
+	set temp1 0
+	set temp2 0
+	lang {
+		*$b *= *$a;
+	}
+}

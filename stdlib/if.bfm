@@ -1,0 +1,6 @@
+macro if {var code} {} {} {
+	while var {
+		eval code
+		set var 0
+	}
+}

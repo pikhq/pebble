@@ -1,0 +1,7 @@
+macro addvar a b temp {
+	set temp 0
+	lang {
+		*$a+=*$b;
+	}
+	isnot0 a
+}

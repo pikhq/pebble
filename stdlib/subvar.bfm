@@ -1,0 +1,11 @@
+source ^move.bfm
+
+macro subvar a b temp {
+	set temp 0
+	while a {
+		subtract b 1
+		add temp 1
+		subtract a 1
+	}
+	move temp > a
+}

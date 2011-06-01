@@ -1,0 +1,8 @@
+macro neq a b {temp1 temp2} {
+	set temp1 0
+	set temp2 0
+	lang b {
+		*$b = (*$a != *$b);
+	}
+	isnot0 b
+}

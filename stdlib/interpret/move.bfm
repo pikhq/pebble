@@ -1,0 +1,8 @@
+macro move a b {} {
+	lang {
+		set memory([set memmap($b)]) [Getval $a]
+		Modvar $b
+	}
+	sameval a b
+	set a 0
+}

@@ -1,0 +1,8 @@
+macro subvar a b temp {
+	set temp 0
+
+	lang {
+		set memory([set memmap($b)]) [expr {[Getval $b]-[Getval $a]}]
+		Modvar $b
+	}
+}

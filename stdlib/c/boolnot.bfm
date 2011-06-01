@@ -1,0 +1,6 @@
+macro boolnot a {} temp {
+	set temp 0
+	lang {
+		*$a = !*$a;
+	}
+}

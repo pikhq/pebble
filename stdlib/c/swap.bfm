@@ -1,0 +1,11 @@
+macro swap {a b} {} {temp} {
+	lang {
+		*$temp = *$a;
+		*$a = *$b;
+		*$b = *$temp;
+	}
+	sameval a temp
+	sameval b a
+	sameval temp b
+	set temp 0
+}

@@ -1,0 +1,18 @@
+source ^move.bfm
+source ^copy.bfm
+
+macro boolor a b {temp1 temp2} {
+	set temp1 0
+	set temp2 0
+
+	move b > temp2
+	while temp2 {
+		subtract b 1
+		set temp2 0
+	}
+	copy a > temp2 : temp1
+	while temp2 {
+		set b -1
+		set temp2 0
+	}
+}

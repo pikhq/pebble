@@ -1,0 +1,13 @@
+source ^move.bfm
+source ^copy.bfm
+
+macro booland a b temp {
+	move b > temp
+	while temp {
+		copa a > temp : b
+		while temp {
+			add b 1
+			set temp 0
+		}
+	}
+}

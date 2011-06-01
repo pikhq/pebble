@@ -1,0 +1,12 @@
+macro outs {a} {} {} {
+	goto a -1
+	while current {
+		left 1
+	}
+	right 1
+	while current {
+		out current
+		right 1
+	}
+	at a
+}	

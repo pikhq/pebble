@@ -1,0 +1,7 @@
+macro move a b {} {
+	lang {
+		*$b=*$a;
+	}
+	sameval a b
+	set a 0
+}

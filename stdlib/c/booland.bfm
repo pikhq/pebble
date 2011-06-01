@@ -1,0 +1,6 @@
+macro booland a b temp {
+	set temp 0
+	lang {
+		*$b = (*$b && *$a);
+	}
+}

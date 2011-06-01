@@ -1,0 +1,18 @@
+source ^move.bfm
+
+macro comp a b {temp1 temp2} {
+	set temp1 0
+	set temp2 0
+	move b > temp2
+	add b 1
+	while a {
+		subtract temp2 1
+		add temp1 1
+		subtract a 1
+	}
+	move temp1 > a
+	while temp2 {
+		subtract b 1
+		set temp2 0
+	}
+}

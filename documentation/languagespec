@@ -1,0 +1,105 @@
+@ var ?location?
+^ Define a variable. If the location isn't specified,
+  the location used is the last location used plus 1.
+  A variable "current" is defined, corresponding to the
+  current location in the Brainfuck array.
+
+lastloc
+^ Output to stderr the last location used in compilation when
+  lastloc was called.
+
+add var number
+subtract var number
+^ Perform the appropriate arithmetic operations on var.
+  Changes "current" to the location of var.
+
+in var
+out var
+^ Input/output operations on var. Changes "current" to the location of var.
+
+right number
+left number
+^ Go left and right the specified amount in the Brainfuck
+  array, and change "current" accordingly.
+
+at var
+^ Tell the compiler that it is currently at var.
+  Sets "current" to the location of var.
+  Useful after calls to left and right.
+
+goto var ?distance?
+^ Go to (location(var)+distance).
+  If distance isn't specified, it equals 0.
+  Also, this changes "current" accordingly.
+
+while var {code}
+^ While var != 0, evaluate "code". Changes "current" to the
+  location of "var" both at the beginning and end of the loop.
+
+set var number
+^ Set variable to to number, and changes "current" accordingly.
+
+macro name {input} {output} {temporary} {code}
+^ Defines a macro, which will be called by "name input > output : temporary".
+  The different types of arguments in macros are only provided as a form of
+  syntactic sugar.
+  If an argument list is equal to {}, then a call won't need the ">" and ":" characters.
+  A macro's arguments may be either variables, lists of variables, or code. The built-in commands
+  should handle lists of variables appropriately.
+
+lang code
+^ Outputs code directly into the resulting code. If a string is prepended with $ inside code, then it will
+  be considered a reference to a macro argument, and treated accordingly.
+  Be very, very careful with this.
+
+eval code
+^ Evaluates code. Useful for macros which expect to have code as an argument.
+
+string name contents ?location?
+^ Creates a C-style string in Brainfuck memory. location is handled as with @.
+  Individual elements of the string will be called by the string's name, appended
+  with the number of elements in the string is.
+  A variable nameend is declared, which equates with the last location in the string.
+  This variable equals 0.
+  It uses the stdcons library, so one should call "source ^stdcons.bfm" before this command.
+
+stringout contents : temp1 temp2
+^ Outputs the string "contents" using the variables temp1 and temp2.
+  It uses the stdcons library, so one should call "source ^stdcons.bfm" before this command.
+
+source filename
+^ Opens filename and includes the source there in the file currently being compiled.
+  The character ^ is special; it is replaced with the location of the standard BFM libraries.
+  The search path includes the current directory or the stdlib directory and a subdir corresponding to
+  whatever target language is being used.
+
+if0 code
+^ Conditional compilation of code. If the compiler is generating code for eof==0, evalute code.
+
+if-1 code
+^ If eof==-1, evaluate code.
+
+#
+^ comment character.
+
+inline args
+^ Output args into the compiled code if the compiler isn't stripping output.
+
+forceinline args
+^ Output args into the compiled code.
+
+is0 var
+^ Tell the compiler that var is 0.
+  If the var isn't really 0, the compiled code may behave oddly when optimized.
+
+isnot0 var
+^ Tell the compiler that var isn't 0
+  If the var is 0, then the compiled code will be longer than it should be when optimized.
+
+be0 var
+^ Output "yes" to stderr during compilation if the var is guaranteed to be 0.
+  Output "no" if it isn't 0.
+  Also outputs a list of variables that are 0.
+
+sameval vara varb
+^ If vara is 0, call is0 varb. If varb is not 0, call isnot0 varb.

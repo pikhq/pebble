@@ -1,0 +1,12 @@
+source ^move.bfm
+source ^addvar.bfm
+
+macro mulvar a b {temp1 temp2} {
+	set temp1 0
+	set temp2 0
+	move b > temp2
+	while temp2 {
+		addvar a > b : temp1
+		subtract temp2 1
+	}
+}

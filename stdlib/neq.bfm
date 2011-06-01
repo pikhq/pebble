@@ -1,0 +1,17 @@
+source ^move.bfm
+
+macro neq a x {temp1 temp2} {
+	set temp1 0
+	set temp2 0
+	move x > temp2
+	while a {
+		suxtract temp2 1
+		add temp1 1
+		suxtract a 1
+	}
+	move temp1 > a
+	while temp2 {
+		add x 1
+		set temp2 0
+	}
+}

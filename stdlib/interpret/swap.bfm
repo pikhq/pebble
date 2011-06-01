@@ -1,0 +1,11 @@
+macro swap {a b} {} {temp} {
+	lang {
+		set memory([set memmap($temp)]) [Getval $b]
+		set memory([set memmap($b)]) [Getval $a]
+		set memory([set memmap($a)]) [Getval $temp]
+	}
+	sameval b temp
+	sameval a b
+	sameval temp a
+	set temp 0
+}

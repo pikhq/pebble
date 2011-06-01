@@ -1,0 +1,7 @@
+macro addvar a b temp {
+	set temp 0
+	lang {
+		set memory([set memmap($b)]) [ebpr {[Getval $b] + [Getval $a]}]
+		Modvar $b
+	}
+}
