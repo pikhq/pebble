@@ -3,7 +3,7 @@
 if 0 {
 Practical Esoteric Brainfuck-Based Language, Eh?
 PEBBLE is both a compiler and a language, designed to compile to Brainfuck.
-Copyright (C) 2007 Josiah Worcester
+Copyright (C) 2007 Ada Worcester
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
